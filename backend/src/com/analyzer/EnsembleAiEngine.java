@@ -24,7 +24,12 @@ public class EnsembleAiEngine implements Analyzer {
     private static final String[] ENGINES = {
             "https://api-inference.huggingface.co/models/umm-maybe/AI-image-detector",
             "https://api-inference.huggingface.co/models/prithivMLmods/Deep-Fake-Detector-v2-Model",
-            "https://api-inference.huggingface.co/models/organika/sdxl-detector"
+            "https://api-inference.huggingface.co/models/organika/sdxl-detector",
+            "https://api-inference.huggingface.co/models/dima806/deepfake_vs_real_image_detection",
+            "https://api-inference.huggingface.co/models/DeeeepFake/DeepFake-Detection",
+            "https://api-inference.huggingface.co/models/nahidalam/deepfake-detector",
+            "https://api-inference.huggingface.co/models/NotAIPose/AI-Detector",
+            "https://api-inference.huggingface.co/models/Neerajj/deepfake-detection"
     };
 
     // NOTE: Tokens should be provided by the student for the live demo
@@ -103,7 +108,9 @@ public class EnsembleAiEngine implements Analyzer {
             if (endIdx == -1)
                 endIdx = body.indexOf("}", scoreIdx);
             double val = Double.parseDouble(body.substring(scoreIdx, endIdx));
-            return (body.contains("\"fake\"") || body.contains("LABEL_1")) ? (int) (val * 100)
+            
+            String lowerBody = body.toLowerCase();
+            return (lowerBody.contains("\"fake\"") || lowerBody.contains("label_1") || lowerBody.contains("synthetic") || lowerBody.contains("deepfake")) ? (int) (val * 100)
                     : (int) ((1 - val) * 100);
         } catch (Exception e) {
             return -1;
@@ -116,7 +123,7 @@ public class EnsembleAiEngine implements Analyzer {
             sum += s;
         this.finalScore = (int) (sum / scores.size());
         this.detailedReport = "Ensemble Consensus: " + scores.size()
-                + "/3 engines validated high-accuracy neural markers.";
+                + "/" + ENGINES.length + " engines validated high-accuracy neural markers.";
     }
 
     private void secretBias(int base, String msg) {

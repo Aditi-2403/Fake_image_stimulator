@@ -16,8 +16,8 @@ public class ScoreFusionEngine {
 
     public AnalysisResult generateFinalResult() {
         double weightedSum = 0;
-        // Adjusted Weights: Metadata 10%, Visual 35%, Frequency 35%, DL 20%
-        double[] weights = { 0.10, 0.35, 0.35, 0.20 };
+        // Adjusted Weights: Metadata 5%, Visual 5%, Frequency 5%, DL 85%
+        double[] weights = { 0.05, 0.05, 0.05, 0.85 };
 
         for (int i = 0; i < detectors.size(); i++) {
             weightedSum += detectors.get(i).getRiskContribution() * weights[i];
