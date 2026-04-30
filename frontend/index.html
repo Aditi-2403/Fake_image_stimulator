@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Image Stimulator | v1.6</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar glass">
+        <div class="sidebar-header">
+            <span class="logo-icon">🛡️</span>
+            <h2 style="font-size: 1.1rem;">Fake Image <span>Stimulator</span></h2>
+        </div>
+        <nav class="side-nav">
+            <a href="#" class="nav-item active" data-view="home-view">🏠 <span>Dashboard</span></a>
+            <a href="#" class="nav-item" data-view="history-view">📋 <span>Scan History</span></a>
+            <a href="#" class="nav-item" data-view="insights-view">📊 <span>Insights</span></a>
+            <a href="#" class="nav-item" data-view="about-view">👤 <span>Dev Profile</span></a>
+        </nav>
+
+        <div class="sidebar-widget glass">
+            <h4>📡 <span>AI News</span></h4>
+            <marquee direction="up" scrollamount="1" style="height: 60px;">
+                <p>• GAN artifact detected... 09:44</p>
+                <p>• Forensic laws updated... 08:32</p>
+                <p>• New Gen-AI model alert... 07:11</p>
+            </marquee>
+        </div>
+
+        <div class="sidebar-footer">
+            <button id="theme-toggle" class="btn-sidebar">🌓 <span>Switch Theme</span></button>
+        </div>
+    </aside>
+
+    <main class="content-area">
+        <!-- Top Stats -->
+        <header class="stats-bar">
+            <div class="stat-card glass">
+                <small>Verified Sessions</small>
+                <h3 id="stat-total">0</h3>
+            </div>
+            <div class="stat-card glass">
+                <small>Secure Files</small>
+                <h3 id="stat-authentic">0</h3>
+            </div>
+            <div class="stat-card glass">
+                <small>Global Detection</small>
+                <h3 id="stat-avg">0%</h3>
+            </div>
+        </header>
+
+        <!-- Home View -->
+        <section id="home-view" class="view">
+            <div class="analyzer-layout-simple">
+                <div class="glass analyzer-container">
+                    <div class="analyzer-header">
+                        <h2>Risk Analysis Hub 🛡️</h2>
+                        <p>Deploying multi-layer forensic scrutinization engine.</p>
+                    </div>
+
+                    <div id="drop-zone" class="upload-area">
+                        <div class="scanner-line" id="scanner"></div>
+                        <div class="upload-content">
+                            <span class="upload-icon" style="font-size: 3rem;">📸</span>
+                            <h3 style="margin-top: 1rem;">Select Evidence Image</h3>
+                            <p>Drag & Drop or click to explore</p>
+                            <input type="file" id="file-input" hidden accept="image/*">
+                        </div>
+                    </div>
+
+                    <!-- Image Preview -->
+                    <div id="preview-container" class="preview-box hidden">
+                        <img id="image-preview" src="" alt="Thumbnail">
+                        <div class="preview-text">
+                            <h5 id="file-name">file_name.jpg</h5>
+                            <small>Ready for deep analysis</small>
+                        </div>
+                    </div>
+
+                    <!-- Pipeline View -->
+                    <div id="pipeline-view" class="hidden">
+                        <ul class="process-steps">
+                            <li id="step-1" class="step">
+                                <div class="step-indicator">L1</div>
+                                <div class="step-info">
+                                    <h4>Data Normalization</h4>
+                                    <p>Preparing pixel matrices</p>
+                                </div>
+                            </li>
+                            <li id="step-2" class="step">
+                                <div class="step-indicator">L2</div>
+                                <div class="step-info">
+                                    <h4>Feature Extraction</h4>
+                                    <p>Mapping high-frequency noise</p>
+                                </div>
+                            </li>
+                            <li id="step-3" class="step">
+                                <div class="step-indicator">L3</div>
+                                <div class="step-info">
+                                    <h4>Forensic Modules</h4>
+                                    <p>Shadows, Asymmetry, & ELA</p>
+                                </div>
+                            </li>
+                            <li id="step-4" class="step">
+                                <div class="step-indicator">L4</div>
+                                <div class="step-info">
+                                    <h4>Fusion Engine</h4>
+                                    <p>Weighted Risk Integration</p>
+                                </div>
+                            </li>
+                            <li id="step-5" class="step">
+                                <div class="step-indicator">L5</div>
+                                <div class="step-info">
+                                    <h4>Decision Output</h4>
+                                    <p>Final Forensic Report</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Result View -->
+                    <div id="result-view" class="result-card hidden">
+                        <div class="confidence-section">
+                            <div class="result-header">
+                                <h3>Analysis Result</h3>
+                                <span id="risk-badge" class="risk-badge">LOW RISK</span>
+                            </div>
+                            <div class="progress-container">
+                                <div id="confidence-bar" class="progress-bar"></div>
+                            </div>
+                            <p style="margin-top: 0.5rem; font-size: 0.9rem; font-weight: 600;">Confidence: <span
+                                    id="confidence-text">0%</span></p>
+                        </div>
+
+                        <div class="explanation-box">
+                            <h5>📜 Forensic Insights</h5>
+                            <p id="result-desc">Determining technical characteristics...</p>
+                        </div>
+
+                        <div class="action-buttons">
+                            <button id="reset-btn" class="btn-glow">New Session</button>
+                            <button id="print-btn" class="btn-secondary">Export Report</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- History View -->
+        <section id="history-view" class="view hidden">
+            <div class="glass table-container">
+                <h3>📜 Session History Log</h3>
+                <table id="history-table">
+                    <thead>
+                        <tr>
+                            <th>Analysis Time</th>
+                            <th>Target File</th>
+                            <th>Risk Factor</th>
+                            <th>Audit Status</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Insights View -->
+        <section id="insights-view" class="view hidden">
+            <div class="stats-bar">
+                <div class="glass stat-card">
+                    <h4>Detection Metrics</h4>
+                    <p style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.7;">Accuracy rate based on last 50
+                        samples.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About View -->
+        <section id="about-view" class="view hidden">
+            <div class="glass table-container">
+                <h2>Developer Info 👤</h2>
+                <div style="margin-top: 1.5rem; line-height: 1.8;">
+                    <p><strong>Lead Developer:</strong> Aditi Goyal</p>
+                    <p><strong>Project:</strong> Fake Image Stimulator v1.6</p>
+                    <p><strong>Department:</strong> B.Tech Computer Science</p>
+                    <p style="margin-top: 1rem; opacity: 0.8; font-style: italic;">
+                        "Focusing on rule-based digital forensics to empower transparent AI detection."
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
