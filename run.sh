@@ -7,7 +7,7 @@ FRONTEND_HTML="frontend/index.html"
 MAIN_CLASS="com.analyzer.Main"
 
 echo "------------------------------------------------"
-echo "🚀 Starting Fake Image Stimulator Forensic Suite"
+echo "🚀 Starting Fake Image Simulator Forensic Suite"
 echo "------------------------------------------------"
 
 # 1. Clean and Create Bin Directory

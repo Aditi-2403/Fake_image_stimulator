@@ -15,7 +15,7 @@ public class Main {
         HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
         server.createContext("/analyze", new AnalysisHandler());
         server.setExecutor(null);
-        System.out.println("[Backend] Fake Image Stimulator Forensic Server started on port 8080...");
+        System.out.println("[Backend] Fake Image Simulator Forensic Server started on port 8080...");
         server.start();
     }
 
